@@ -1,0 +1,331 @@
+#include "I.h"
+#include <map>
+#include <unistd.h>
+#include <cstdlib>
+struct vertex;
+typedef map<string,ssnode>::iterator iter;
+//int 10000000 = 10000000;
+using namespace std;
+
+
+
+struct vertex
+{
+public:
+	string en;
+	ssnode value;
+	int distance;
+    	bool visited;
+    	vertex(){}
+	vertex(string a, ssnode b,int c,bool f)
+	{
+		this->en = a;
+		this->value = b;
+		this->distance = c;
+        	this->visited = f;
+	}
+};
+
+
+class CompareDist
+{
+    public:
+        bool operator()(vertex& n1, vertex& n2)
+        {
+           if (n1.distance > n2.distance) 
+                return true;
+           else
+                return false;
+        }
+};
+	
+
+vector<string> sizeofclique(string a,grph g,vector<string>* f)
+{
+	for(int k=0 ;k<f->size() ; k++){
+	cout << "freinds at " << k << " " << f->at(k) << endl;	
+	}
+	
+	cout << "data " << a << " " << endl;
+    vector<string> ans;
+    ans.push_back(a);
+cout << "no. of friends " << f->size() <<endl;
+//cout << "no. of friends " << f->size() <<endl;
+    if(f->size() == 0) return ans;
+    else if(f->size() == 1){
+        ans.push_back(f->at(0));
+        return ans;
+    }
+    else
+    {
+	cout << " 0 " << f->size() << endl;
+
+       for(int i = 0 ;i <f->size() ; i++)
+        {
+		
+			   
+		cout << "here " <<f->size()<<endl;
+            string x = f->at(i);
+cout << "1 " << f->size() << "at "<< x<< endl;
+		
+            f->erase(f->begin()+i);
+           // vector<string> temp = f;
+            vector<string> var = sizeofclique(a,g,f);
+	bool t = false;
+	int count = 0;
+	cout << " 2 " << var.size() << endl;
+            for(int j = 0; j<var.size() ; j++)
+            {
+                string y = var.at(j);
+	cout << " 3 " <<  g->student.at(y).friends.size() << endl;
+                for(int k = 0; k< g->student.at(y).friends.size() ; k++)
+                {
+                    if(g->student.at(y).friends.at(k) == x) {
+                        count++;
+                        break;
+                    }
+                }
+		if(count == var.size()){
+		var.push_back(x);
+		 t = true;
+		}	
+                if((t) & (ans.size() < var.size()))
+                {
+                    ans = var;
+                }
+            }  
+        } 
+    } 
+    return ans;
+}
+
+	int lengthsp(string a,string b,grph g)
+	{
+        int size = g->student.size();
+        map<string,vertex> data;
+        for(iter iterator = g->student.begin(); iterator != g->student.end(); iterator++)
+        {
+            if(iterator->second.entrynumber == a){
+                vertex x = vertex(iterator->first,iterator->second,0,false);
+                data[iterator->first] = x;
+            }
+            else{
+                vertex x = vertex(iterator->first,iterator->second,10000000,false);
+                data[iterator->first] = x;
+            }
+        }
+        
+	priority_queue< vertex, vector<vertex>, CompareDist> pq;
+    	vertex first = vertex(a,g->student.at(a),0,true);
+    	pq.push(first);
+	cout << "reach to " << b << " at top " <<pq.top().en << endl;
+    	while((pq.top().en != b) && (!pq.empty())) 
+    	{
+        vertex temp = pq.top();
+        pq.pop();
+        string node= temp.en;
+	//cout << "at " << node << endl;
+        size = g->student.at(node).friends.size();
+            for(int i=0;i <size;i++ )
+            {
+                if(data[g->student.at(node).friends.at(i)].distance > data[node].distance + 1){
+                    data[g->student.at(node).friends.at(i)].distance = data[node].distance + 1;
+                }
+                    
+                if(!data[g->student.at(node).friends.at(i)].visited)
+                {
+                    g->student.at(g->student.at(node).friends.at(i)).parent = node;
+                    vertex newNode = vertex(g->student.at(node).friends.at(i),g->student.at(g->student.at(node).friends.at(i)),data[g->student.at(node).friends.at(i)].distance,true);
+                    pq.push(newNode);
+                    data[g->student.at(node).friends.at(i)].visited = true;
+                }
+            }
+
+        }
+        vertex temp = pq.top();
+        int ans = temp.distance;
+	cout << ans << endl;
+        return ans;
+	}
+
+    vector<string> listsp(string a,string b,grph g){
+        lengthsp(a,b,g);
+        vector<string> list;
+        vertex first = vertex(a,g->student.at(a),99999999,true);
+        list.push_back(b);
+	cout << "parent of final " << g->student.at(b).parent << endl;
+        while(first.en != a)
+        {
+            string node = first.en;
+		cout << "parent " << first.value.parent << endl;
+            list.push_back(first.value.parent);
+            vertex temp = vertex(g->student.at(node).parent,g->student.at(g->student.at(node).parent),0,false);
+            first = temp;
+        }
+        list.push_back(a);
+        return list;
+    }
+
+struct input
+{
+    string ini;
+    string final;
+    input(string a,string b)
+    {
+        this->ini = a;
+        this->final = b;
+    }
+};
+
+struct inputCompare
+{
+public:
+    bool operator()(const input &a, const input &b) const
+    {
+        if (a.ini == b.ini) return false;
+        else return true;
+    }
+};
+int floydwarshall(string person, grph *g)
+    {
+        int size = g->student.size();
+        int count =0;
+            map<input,int, inputCompare> m;
+            map<input,string,inputCompare> next;
+            for(iter iterator = g->student.begin(); iterator != g->student.end(); iterator++)
+            {
+                for(int w=0;w<iterator->second.friends.size();w++)
+                {
+                    input in = input(iterator->first,iterator->second.friends.at(w));
+                    m[in] = 1;
+                }
+
+                for(iter itera = g->student.begin(); itera != g->student.end(); itera++)
+                {
+                    input inp = input(iterator->first,itera->first);
+                    if(m.find(inp) == m.end()){ 
+                        m[inp] = 10000000;
+                    }
+                }
+            }
+            for (iter it = g->student.begin(); it != g->student.end(); it++)
+            {
+                for (iter j = g->student.begin(); j != g->student.end(); j++)
+                {
+                    for(iter kt = g->student.begin(); kt != g->student.end(); kt++)
+                    {
+			cout << kt->first << endl;
+                         input i1 = input(it->first,kt->first);
+                         input j1 = input(j->first,kt->first);
+                         input k1 = input(it->first,j->first);
+                        if ((m[i1] * m[j1] != 0) && (it != j))
+                        {
+                            if ((m[i1] + m[j1] < m[k1]) || (m[k1] == 0))
+                            {
+                            m[k1] = m[i1] + m[j1];
+                            //next[k1] = kt->first;
+				/*if(g->student.at(j->first).parent == person){
+                                count -= 1;
+                            	}
+                            	else {
+                                	g->student.at(j->first).parent = kt->first;
+                                	if(kt->first == person) count++;
+                            	}*/
+                            }
+				
+                        }
+                    }
+                }
+        }
+return count;
+    }
+    int floyds(string person,grph g)
+    {
+        int size = g->student.size();
+        int count =0;
+        map<string,int> b;
+            for(iter iterator = g->student.begin(); iterator != g->student.end(); iterator++)
+            {
+                for(int w=0;w<iterator->second.friends.size();w++)
+                {
+                    //input in = input(iterator->first,iterator->second->node->friends.at(i));
+                    string s;
+                    s.append(iterator->first);
+                    s.append(iterator->second.friends.at(w));
+                    //m[in] = 1;
+                    b[s] = 1;
+                }
+
+                for(iter itera = g->student.begin(); itera != g->student.end(); itera++)
+                {
+                    //input inp = input(iterator->first,iter->first);
+                    string s;
+                    s.append(iterator->first);
+                    s.append(itera->first);
+                    if(b.find(s) == b.end()){ 
+                        b[s] = 10000000;
+                    }
+                }
+            }
+            for (iter it = g->student.begin(); it != g->student.end(); it++)
+            {
+		cout << count << endl;
+                string w = it->first;
+                for (iter j = g->student.begin(); j != g->student.end(); j++)
+                {
+                    string x = j->first;
+                    if(b[it->first + j->first] != 10000000){
+                        g->student.at(j->first).parent = it->first;
+                        if(it->first == person) count++;
+                    }
+                    for(iter kt = g->student.begin(); kt != g->student.end(); kt++)
+                    {
+                        //cout <<"ghh " <<kt->first <<endl;
+                         string o = (kt->first);
+                        string i1 = it->first + j->first;
+                        //cout << i1 <<endl;
+                        string j1 = (kt->first) + (j->first);
+                        string k1 = (it->first) + (j->first);
+                        if ((b[i1] * b[j1] != 0) && (it != j))
+                        {
+                            if ((b[i1] + b[j1] < b[k1]) || (b[k1] == 0))
+                            {
+                            b[k1] = b[i1] + b[j1];
+                            // if(g->student.at(j->first)->parent == ""){
+                            //     g->student.at(j->first)->parent = kt->first;
+                            //     if(kt->first == person) count++;
+                            // }
+                            if(g->student.at(j->first).parent == person){
+                                count -= 1;
+                            }
+                            else {
+                                g->student.at(j->first).parent = kt->first;
+                                if(kt->first == person) count++;
+                            }
+                            }
+                        }
+                    }
+                }
+    }
+    return count;
+}
+
+
+
+    bool moreimp(string a,grph g)
+    {
+        bool ans = false;
+        int value = floyds(a,g);
+        int size = g->student.at(a).friends.size();
+        for(int i = 0; i<size ;i++)
+        {
+            int temp = floyds(g->student.at(a).friends.at(i),g);
+            if(temp > value){
+                ans = true;
+                break;
+            }
+        } 
+        return ans;
+    }
+
+

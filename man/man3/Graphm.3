@@ -1,0 +1,61 @@
+.TH "Graphm" 3 "Tue Nov 19 2013" "Version 1.0" "CSP301 Product2" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+Graphm \- 
+.SH SYNOPSIS
+.br
+.PP
+.PP
+\fC#include <gml\&.h>\fP
+.SS "Public Member Functions"
+
+.in +1c
+.ti -1c
+.RI "void \fBinsert\fP (map< int, \fBUniversity\fP * > Univs)"
+.br
+.in -1c
+.SS "Public Attributes"
+
+.in +1c
+.ti -1c
+.RI "map< \fBStudent\fP *, int > \fBstudId\fP"
+.br
+.ti -1c
+.RI "map< \fBFaculty\fP *, int > \fBfacId\fP"
+.br
+.ti -1c
+.RI "map< string, \fBStudent\fP * > \fBstudd\fP"
+.br
+.ti -1c
+.RI "map< int, vector< int > > \fBedges\fP"
+.br
+.in -1c
+.SH "Detailed Description"
+.PP 
+< Gml\&.h is a header file to create graph after reading from graphml file and save the nodes and content in graph< Class \fBGraphm\fP creates the graph using map Function saveGraph take content fron graphml file and save the content in the object of graph 
+.PP
+Definition at line 13 of file gml\&.h\&.
+.SH "Member Function Documentation"
+.PP 
+.SS "void \fBGraphm::insert\fP (map< int, \fBUniversity\fP * >Univs)\fC [inline]\fP"
+.PP
+Definition at line 19 of file gml\&.h\&.
+.SH "Member Data Documentation"
+.PP 
+.SS "map<int,vector<int> > \fBGraphm::edges\fP"
+.PP
+Definition at line 18 of file gml\&.h\&.
+.SS "map<\fBFaculty\fP*,int> \fBGraphm::facId\fP"
+.PP
+Definition at line 16 of file gml\&.h\&.
+.SS "map<string,\fBStudent\fP*> \fBGraphm::studd\fP"
+.PP
+Definition at line 17 of file gml\&.h\&.
+.SS "map<\fBStudent\fP*,int> \fBGraphm::studId\fP"
+.PP
+Definition at line 15 of file gml\&.h\&.
+
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CSP301 Product2 from the source code\&.

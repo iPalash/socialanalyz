@@ -1,0 +1,137 @@
+\hypertarget{network_8h}{\section{network.\-h \-File \-Reference}
+\label{network_8h}\index{network.\-h@{network.\-h}}
+}
+{\ttfamily \#include \char`\"{}\-I.\-h\char`\"{}}\*
+{\ttfamily \#include $<$map$>$}\*
+{\ttfamily \#include $<$unistd.\-h$>$}\*
+{\ttfamily \#include $<$cstdlib$>$}\*
+\subsection*{\-Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structvertex}{vertex}
+\item 
+class \hyperlink{classCompareDist}{\-Compare\-Dist}
+\end{DoxyCompactItemize}
+\subsection*{\-Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef map$<$ string, \hyperlink{structssnode}{ssnode} $>$\*
+\-::iterator \hyperlink{network_8h_a57a05483d800ea02220a19f44c6ea362}{iter}
+\end{DoxyCompactItemize}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+vector$<$ string $>$ \hyperlink{network_8h_a58113dccb8d05f7b174c2d9643e480e1}{sizeofclique} (string a, \hyperlink{classgrph}{grph} $\ast$\hyperlink{Analyzer_8cpp_a2d69a727a1bde0239912a65bb03dd689}{g}, vector$<$ string $>$ $\ast$f)
+\item 
+int \hyperlink{network_8h_aa01d8a87394f81c360d13698be78f93f}{lengthsp} (string a, string b, \hyperlink{classgrph}{grph} $\ast$\hyperlink{Analyzer_8cpp_a2d69a727a1bde0239912a65bb03dd689}{g})
+\item 
+vector$<$ string $>$ \hyperlink{network_8h_a80df2c9b2e9a77cd88c9cb30ac412d22}{shortestpath} (\hyperlink{classgrph}{grph} $\ast$\hyperlink{Analyzer_8cpp_a2d69a727a1bde0239912a65bb03dd689}{g})
+\item 
+vector$<$ string $>$ \hyperlink{network_8h_aee2a2c23cf84b05ba54d7d8a032182b1}{listsp} (string a, string b, \hyperlink{classgrph}{grph} $\ast$\hyperlink{Analyzer_8cpp_a2d69a727a1bde0239912a65bb03dd689}{g})
+\item 
+int \hyperlink{network_8h_aa2bf59784467907a420f301131121200}{floyd2} (string person, \hyperlink{classgrph}{grph} $\ast$\hyperlink{Analyzer_8cpp_a2d69a727a1bde0239912a65bb03dd689}{g})
+\item 
+string \hyperlink{network_8h_a03a51d6a2d48e7750d1dfafb5dd9ff7a}{moreimp} (string a, \hyperlink{classgrph}{grph} $\ast$\hyperlink{Analyzer_8cpp_a2d69a727a1bde0239912a65bb03dd689}{g})
+\end{DoxyCompactItemize}
+\subsection*{\-Variables}
+\begin{DoxyCompactItemize}
+\item 
+int \hyperlink{network_8h_ae009728a93e756481af1db3c402acb08}{global} = 0
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Typedef \-Documentation}
+\hypertarget{network_8h_a57a05483d800ea02220a19f44c6ea362}{\index{network.\-h@{network.\-h}!iter@{iter}}
+\index{iter@{iter}!network.h@{network.\-h}}
+\subsubsection[{iter}]{\setlength{\rightskip}{0pt plus 5cm}typedef map$<$string,{\bf ssnode}$>$\-::iterator {\bf iter}}}\label{network_8h_a57a05483d800ea02220a19f44c6ea362}
+
+
+\-Definition at line 5 of file network.\-h.
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{network_8h_aa2bf59784467907a420f301131121200}{\index{network.\-h@{network.\-h}!floyd2@{floyd2}}
+\index{floyd2@{floyd2}!network.h@{network.\-h}}
+\subsubsection[{floyd2}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf floyd2} (
+\begin{DoxyParamCaption}
+\item[{string}]{person, }
+\item[{{\bf grph} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}}\label{network_8h_aa2bf59784467907a420f301131121200}
+$<$ \-Function floyd2 to calculate importance of a given person \-Function boolimp gives the boolean if some friend is having more importance than the given person 
+
+\-Definition at line 220 of file network.\-h.
+
+\hypertarget{network_8h_aa01d8a87394f81c360d13698be78f93f}{\index{network.\-h@{network.\-h}!lengthsp@{lengthsp}}
+\index{lengthsp@{lengthsp}!network.h@{network.\-h}}
+\subsubsection[{lengthsp}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf lengthsp} (
+\begin{DoxyParamCaption}
+\item[{string}]{a, }
+\item[{string}]{b, }
+\item[{{\bf grph} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}}\label{network_8h_aa01d8a87394f81c360d13698be78f93f}
+\-Function shortestpath gives the shortest path in the graph 
+
+\-Definition at line 99 of file network.\-h.
+
+\hypertarget{network_8h_aee2a2c23cf84b05ba54d7d8a032182b1}{\index{network.\-h@{network.\-h}!listsp@{listsp}}
+\index{listsp@{listsp}!network.h@{network.\-h}}
+\subsubsection[{listsp}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ {\bf listsp} (
+\begin{DoxyParamCaption}
+\item[{string}]{a, }
+\item[{string}]{b, }
+\item[{{\bf grph} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}}\label{network_8h_aee2a2c23cf84b05ba54d7d8a032182b1}
+
+
+\-Definition at line 172 of file network.\-h.
+
+\hypertarget{network_8h_a03a51d6a2d48e7750d1dfafb5dd9ff7a}{\index{network.\-h@{network.\-h}!moreimp@{moreimp}}
+\index{moreimp@{moreimp}!network.h@{network.\-h}}
+\subsubsection[{moreimp}]{\setlength{\rightskip}{0pt plus 5cm}string {\bf moreimp} (
+\begin{DoxyParamCaption}
+\item[{string}]{a, }
+\item[{{\bf grph} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}}\label{network_8h_a03a51d6a2d48e7750d1dfafb5dd9ff7a}
+
+
+\-Definition at line 301 of file network.\-h.
+
+\hypertarget{network_8h_a80df2c9b2e9a77cd88c9cb30ac412d22}{\index{network.\-h@{network.\-h}!shortestpath@{shortestpath}}
+\index{shortestpath@{shortestpath}!network.h@{network.\-h}}
+\subsubsection[{shortestpath}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ {\bf shortestpath} (
+\begin{DoxyParamCaption}
+\item[{{\bf grph} $\ast$}]{g}
+\end{DoxyParamCaption}
+)}}\label{network_8h_a80df2c9b2e9a77cd88c9cb30ac412d22}
+\-Function listsp gives the list of person in the shortest path between two given person 
+
+\-Definition at line 152 of file network.\-h.
+
+\hypertarget{network_8h_a58113dccb8d05f7b174c2d9643e480e1}{\index{network.\-h@{network.\-h}!sizeofclique@{sizeofclique}}
+\index{sizeofclique@{sizeofclique}!network.h@{network.\-h}}
+\subsubsection[{sizeofclique}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ {\bf sizeofclique} (
+\begin{DoxyParamCaption}
+\item[{string}]{a, }
+\item[{{\bf grph} $\ast$}]{g, }
+\item[{vector$<$ string $>$ $\ast$}]{f}
+\end{DoxyParamCaption}
+)}}\label{network_8h_a58113dccb8d05f7b174c2d9643e480e1}
+\-Function lengthsp gives the lenght of the \-Shortest distance between the two specified person 
+
+\-Definition at line 53 of file network.\-h.
+
+
+
+\subsection{\-Variable \-Documentation}
+\hypertarget{network_8h_ae009728a93e756481af1db3c402acb08}{\index{network.\-h@{network.\-h}!global@{global}}
+\index{global@{global}!network.h@{network.\-h}}
+\subsubsection[{global}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf global} = 0}}\label{network_8h_ae009728a93e756481af1db3c402acb08}
+\hyperlink{network_8h}{network.\-h} is the header file having functions to calculate shortest path and importance of a given person \-Structure to define a vertex storing entrynumber and properties 
+
+\-Definition at line 9 of file network.\-h.
+

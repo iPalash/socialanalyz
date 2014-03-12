@@ -1,0 +1,98 @@
+.TH "network.h" 3 "Tue Nov 19 2013" "Version 1.0" "CSP301 Product2" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+network.h \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'I\&.h'\fP
+.br
+\fC#include <map>\fP
+.br
+\fC#include <unistd\&.h>\fP
+.br
+\fC#include <cstdlib>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBvertex\fP"
+.br
+.ti -1c
+.RI "class \fBCompareDist\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef map< string, \fBssnode\fP >
+.br
+::iterator \fBiter\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "vector< string > \fBsizeofclique\fP (string a, \fBgrph\fP *\fBg\fP, vector< string > *f)"
+.br
+.ti -1c
+.RI "int \fBlengthsp\fP (string a, string b, \fBgrph\fP *\fBg\fP)"
+.br
+.ti -1c
+.RI "vector< string > \fBshortestpath\fP (\fBgrph\fP *\fBg\fP)"
+.br
+.ti -1c
+.RI "vector< string > \fBlistsp\fP (string a, string b, \fBgrph\fP *\fBg\fP)"
+.br
+.ti -1c
+.RI "int \fBfloyd2\fP (string person, \fBgrph\fP *\fBg\fP)"
+.br
+.ti -1c
+.RI "string \fBmoreimp\fP (string a, \fBgrph\fP *\fBg\fP)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fBglobal\fP = 0"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef map<string,\fBssnode\fP>::iterator \fBiter\fP"
+.PP
+Definition at line 5 of file network\&.h\&.
+.SH "Function Documentation"
+.PP 
+.SS "int \fBfloyd2\fP (stringperson, \fBgrph\fP *g)"< Function floyd2 to calculate importance of a given person Function boolimp gives the boolean if some friend is having more importance than the given person 
+.PP
+Definition at line 220 of file network\&.h\&.
+.SS "int \fBlengthsp\fP (stringa, stringb, \fBgrph\fP *g)"Function shortestpath gives the shortest path in the graph 
+.PP
+Definition at line 99 of file network\&.h\&.
+.SS "vector<string> \fBlistsp\fP (stringa, stringb, \fBgrph\fP *g)"
+.PP
+Definition at line 172 of file network\&.h\&.
+.SS "string \fBmoreimp\fP (stringa, \fBgrph\fP *g)"
+.PP
+Definition at line 301 of file network\&.h\&.
+.SS "vector<string> \fBshortestpath\fP (\fBgrph\fP *g)"Function listsp gives the list of person in the shortest path between two given person 
+.PP
+Definition at line 152 of file network\&.h\&.
+.SS "vector<string> \fBsizeofclique\fP (stringa, \fBgrph\fP *g, vector< string > *f)"Function lengthsp gives the lenght of the Shortest distance between the two specified person 
+.PP
+Definition at line 53 of file network\&.h\&.
+.SH "Variable Documentation"
+.PP 
+.SS "int \fBglobal\fP = 0"\fBnetwork\&.h\fP is the header file having functions to calculate shortest path and importance of a given person Structure to define a vertex storing entrynumber and properties 
+.PP
+Definition at line 9 of file network\&.h\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CSP301 Product2 from the source code\&.

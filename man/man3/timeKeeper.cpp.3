@@ -1,0 +1,75 @@
+.TH "timeKeeper.cpp" 3 "Tue Nov 19 2013" "Version 1.0" "CSP301 Product2" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+timeKeeper.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include <stdio\&.h>\fP
+.br
+\fC#include <iostream>\fP
+.br
+\fC#include <cstdlib>\fP
+.br
+\fC#include <random>\fP
+.br
+\fC#include <queue>\fP
+.br
+\fC#include <sys/msg\&.h>\fP
+.br
+\fC#include <errno\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <sys/ipc\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBunivslen\fP"
+.br
+.ti -1c
+.RI "struct \fBids\fP"
+.br
+.ti -1c
+.RI "class \fBCompareTime\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "int \fBmain\fP (int argc, char **argv)"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "float \fBcurrTime\fP = 0"
+.br
+.ti -1c
+.RI "priority_queue< \fBids\fP, vector
+.br
+< \fBids\fP >, \fBCompareTime\fP > \fBtimes\fP"
+.br
+.in -1c
+.SH "Function Documentation"
+.PP 
+.SS "int \fBmain\fP (intargc, char **argv)"
+.PP
+Definition at line 53 of file timeKeeper\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "float \fBcurrTime\fP = 0"
+.PP
+Definition at line 50 of file timeKeeper\&.cpp\&.
+.SS "priority_queue<\fBids\fP, vector<\fBids\fP>, \fBCompareTime\fP> \fBtimes\fP"
+.PP
+Definition at line 51 of file timeKeeper\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CSP301 Product2 from the source code\&.

@@ -1,0 +1,185 @@
+.TH "graph.cpp" 3 "Tue Nov 19 2013" "Version 1.0" "CSP301 Product2" \" -*- nroff -*-
+.ad l
+.nh
+.SH NAME
+graph.cpp \- 
+.SH SYNOPSIS
+.br
+.PP
+\fC#include 'gml\&.h'\fP
+.br
+\fC#include <sys/msg\&.h>\fP
+.br
+\fC#include <sys/ipc\&.h>\fP
+.br
+\fC#include <sys/types\&.h>\fP
+.br
+\fC#include <errno\&.h>\fP
+.br
+
+.SS "Classes"
+
+.in +1c
+.ti -1c
+.RI "struct \fBunivslen\fP"
+.br
+.ti -1c
+.RI "struct \fBids\fP"
+.br
+.ti -1c
+.RI "class \fBGraph\fP"
+.br
+.in -1c
+.SS "Typedefs"
+
+.in +1c
+.ti -1c
+.RI "typedef map< int, \fBUniversity\fP * >
+.br
+::iterator \fBit_type\fP"
+.br
+.in -1c
+.SS "Functions"
+
+.in +1c
+.ti -1c
+.RI "ofstream \fBlogfile\fP ('Friendship Log\&.txt')"
+.br
+.ti -1c
+.RI "void \fBgenerateFaculty\fP (\fBGraph\fP *\fBg\fP, map< int, \fBUniversity\fP * > *Univs)"
+.br
+.ti -1c
+.RI "float \fBgenerateStudent\fP (\fBGraph\fP *\fBg\fP, map< int, \fBUniversity\fP * > *Univs, map< string, \fBglobalInterest\fP * > *gIT)"
+.br
+.ti -1c
+.RI "void \fBfloatCourseUniv\fP (\fBUniversity\fP *u)"
+.br
+.ti -1c
+.RI "void \fBAssignCourseProf\fP (\fBUniversity\fP *u)"
+.br
+.ti -1c
+.RI "void \fBAssignStudent\fP (\fBUniversity\fP *u)"
+.br
+.ti -1c
+.RI "float \fBgenerateCourses\fP (map< int, \fBUniversity\fP * > *Univs)"
+.br
+.ti -1c
+.RI "bool \fBcontains\fP (vector< string > *vec, string toSearch)"
+.br
+.ti -1c
+.RI "bool \fBcommonInterests\fP (vector< \fBInterest\fP > *vec1, vector< \fBInterest\fP > *vec2)"
+.br
+.ti -1c
+.RI "bool \fBcommonCourses\fP (vector< \fBCourses\fP * > *vec1, vector< \fBCourses\fP * > *vec2)"
+.br
+.ti -1c
+.RI "float \fBgenerateFriends\fP (map< int, \fBUniversity\fP * > *uni, map< string, \fBglobalInterest\fP * > *allInterest, int uid)"
+.br
+.ti -1c
+.RI "int \fBmain\fP ()"
+.br
+.in -1c
+.SS "Variables"
+
+.in +1c
+.ti -1c
+.RI "int \fByear\fP = 2013"
+.br
+.ti -1c
+.RI "string \fBname\fP [] = {'Aastha','Atul','Abhishek','Anand','Abhijeet','Aditya','Akash','Ashish','Arvind','Aarti','Akon'}"
+.br
+.ti -1c
+.RI "string \fBdept\fP [] = {'d1','d2','d3','d4','d5','d6','d7','d8','d9','d10','d11'}"
+.br
+.ti -1c
+.RI "string \fBhome\fP [] = {'h1','h2','h3','h4','h5','h6','h7','h8','h9','h10','h11'}"
+.br
+.ti -1c
+.RI "char \fBfloors\fP [] = { 'a','b','c','d'}"
+.br
+.ti -1c
+.RI "default_random_engine \fBsr\fP"
+.br
+.ti -1c
+.RI "default_random_engine \fBfcr\fP"
+.br
+.ti -1c
+.RI "default_random_engine \fBcr\fP"
+.br
+.ti -1c
+.RI "default_random_engine \fBfr\fP"
+.br
+.in -1c
+.SH "Typedef Documentation"
+.PP 
+.SS "typedef map<int,\fBUniversity\fP*>::iterator \fBit_type\fP"
+.PP
+Definition at line 14 of file graph\&.cpp\&.
+.SH "Function Documentation"
+.PP 
+.SS "void \fBAssignCourseProf\fP (\fBUniversity\fP *u)"Function assigns the \fBCourses\fP to professors 
+.PP
+Definition at line 188 of file graph\&.cpp\&.
+.SS "void \fBAssignStudent\fP (\fBUniversity\fP *u)"Function AssignStudent assigns \fBCourses\fP to students 
+.PP
+Definition at line 205 of file graph\&.cpp\&.
+.SS "bool \fBcommonCourses\fP (vector< \fBCourses\fP * > *vec1, vector< \fBCourses\fP * > *vec2)"Function commonCourses return bool on comparing two students whether they have common \fBCourses\fP 
+.PP
+Definition at line 304 of file graph\&.cpp\&.
+.SS "bool \fBcommonInterests\fP (vector< \fBInterest\fP > *vec1, vector< \fBInterest\fP > *vec2)"Function commonInterests return bool on comparing two students whether they have common \fBInterest\fP 
+.PP
+Definition at line 285 of file graph\&.cpp\&.
+.SS "bool \fBcontains\fP (vector< string > *vec, stringtoSearch)"
+.PP
+Definition at line 268 of file graph\&.cpp\&.
+.SS "void \fBfloatCourseUniv\fP (\fBUniversity\fP *u)"Function floatCourseUniv float \fBCourses\fP in the university 
+.PP
+Definition at line 175 of file graph\&.cpp\&.
+.SS "float \fBgenerateCourses\fP (map< int, \fBUniversity\fP * > *Univs)"Function generates the \fBCourses\fP 
+.PP
+Definition at line 257 of file graph\&.cpp\&.
+.SS "void \fBgenerateFaculty\fP (\fBGraph\fP *g, map< int, \fBUniversity\fP * > *Univs)"Function generateFaculty generates the faculty to create nodes and store information of faculty in their respective attributes 
+.PP
+Definition at line 63 of file graph\&.cpp\&.
+.SS "float \fBgenerateFriends\fP (map< int, \fBUniversity\fP * > *uni, map< string, \fBglobalInterest\fP * > *allInterest, intuid)"Function generateFriends generate friends , create edge betwwen two students in graph 
+.PP
+Definition at line 324 of file graph\&.cpp\&.
+.SS "float \fBgenerateStudent\fP (\fBGraph\fP *g, map< int, \fBUniversity\fP * > *Univs, map< string, \fBglobalInterest\fP * > *gIT)"Function generateStudent generates the \fBStudent\fP and store their information in their attributes and in the graph 
+.PP
+Definition at line 119 of file graph\&.cpp\&.
+.SS "ofstream \fBlogfile\fP ('Friendship Log\&.txt')"
+.SS "int \fBmain\fP ()"
+.PP
+Definition at line 674 of file graph\&.cpp\&.
+.SH "Variable Documentation"
+.PP 
+.SS "default_random_engine \fBcr\fP"
+.PP
+Definition at line 22 of file graph\&.cpp\&.
+.SS "string \fBdept\fP[] = {'d1','d2','d3','d4','d5','d6','d7','d8','d9','d10','d11'}"
+.PP
+Definition at line 11 of file graph\&.cpp\&.
+.SS "default_random_engine \fBfcr\fP"
+.PP
+Definition at line 21 of file graph\&.cpp\&.
+.SS "char \fBfloors\fP[] = { 'a','b','c','d'}"
+.PP
+Definition at line 13 of file graph\&.cpp\&.
+.SS "default_random_engine \fBfr\fP"
+.PP
+Definition at line 23 of file graph\&.cpp\&.
+.SS "string \fBhome\fP[] = {'h1','h2','h3','h4','h5','h6','h7','h8','h9','h10','h11'}"
+.PP
+Definition at line 12 of file graph\&.cpp\&.
+.SS "string \fBname\fP[] = {'Aastha','Atul','Abhishek','Anand','Abhijeet','Aditya','Akash','Ashish','Arvind','Aarti','Akon'}"
+.PP
+Definition at line 10 of file graph\&.cpp\&.
+.SS "default_random_engine \fBsr\fP"
+.PP
+Definition at line 18 of file graph\&.cpp\&.
+.SS "int \fByear\fP = 2013"
+.PP
+Definition at line 9 of file graph\&.cpp\&.
+.SH "Author"
+.PP 
+Generated automatically by Doxygen for CSP301 Product2 from the source code\&.
